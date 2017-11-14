@@ -1,0 +1,32 @@
+<% include partials/header %>
+	<div class="container">
+		<h1>This page will show the description</h1>
+		<p> <%=  foundCampground.name%> </p>
+		<img src="<%= foundCampground.image%>">
+		<p>Description : <%= foundCampground.description%></p>
+		
+		<% foundCampground.comments.forEach(function (comment){ %>
+			<p>
+				Comments: <%= comment.text %> - <strong><%= comment.author%> </strong> 
+
+			</p>
+		<%})%>
+
+		<form action="/campgrounds/<%= foundCampground._id%>/comment" method="POST">
+			  <div class="form-row">
+			    <div class="col-lg-4">
+			      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
+			    </div>
+			    <div class="col-lg-4">
+			      <input type="text" class="form-control" placeholder="user" name="data[author]">
+			    </div>
+			    <div class="col-lg-4">
+			    	<button type="Submit" class="btn btn-primary">Submit</button>
+			    </div>
+			  </div>		
+		</form>
+	</div>
+	
+
+
+<% include partials/footer %>

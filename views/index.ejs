@@ -1,0 +1,23 @@
+<% include partials/header%>
+<div class="container">
+	<h1>This page will show Camp Grounds</h1>
+
+<a href="/campgrounds/new">Add a new CampGround</a>
+	<div class="row">
+		<%campgrounds.forEach(function (ground) { %>
+		
+			<div class="col-lg-4">
+				<div class="thumbnail">
+					<img src="<%= ground.image%> ">
+					<h4 class="caption"><%= ground.name %></h4>
+					<p>
+						<a href="/campgrounds/<%= ground.id%>" class = "btn btn-primary"> More info</a>
+					</p>
+				</div>
+			</div>	
+		<% })%>
+	</div>
+</div>
+
+
+<% include partials/footer%>
