@@ -1,6 +1,14 @@
-Things to do Today:
-  ☐ add comment new and create routes
-  ☐ add comment new form on show page
 
---- ✄ -----------------------
 
+Things to do today:@started(17-11-16 02:04)    
+  ✔ Style the comments @low @done (17-11-17 17:20)
+  ✔ Style the show page @low @done (17-11-17 17:20)
+  ☐ Implement Authentication and user functionality @high
+
+  
+  
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+ ✔ add comment new form on show page @done (17-11-16 02:00) @project(Things to do Today)
+ ✔ add comment new and create routes @done (17-11-16 02:00) @project(Things to do Today)

@@ -1,32 +1,63 @@
 <% include partials/header %>
 	<div class="container">
-		<h1>This page will show the description</h1>
-		<p> <%=  foundCampground.name%> </p>
-		<img src="<%= foundCampground.image%>">
-		<p>Description : <%= foundCampground.description%></p>
+	 <div class="main-content">
+	 	<div class="row">
+	 		<div class="col-md-3">
+	 			<div class="left-content">
+	 				<ul class="list-group">
+					  <li class="list-group-item disabled">Cras justo odio</li>
+					  <li class="list-group-item">Dapibus ac facilisis in</li>
+					  <li class="list-group-item">Morbi leo risus</li>
+					  <li class="list-group-item">Porta ac consectetur ac</li>
+					  <li class="list-group-item">Vestibulum at eros</li>
+					</ul>
+	 			</div>
+	 		</div>
+	 		<div class="col-mid-9">
+	 			<div class="right-content">
+	 				<div class="card" style="width: 40rem;">
+	 					<img src="<%= foundCampground.image%>" class ="card-img-top">
+	 					
+	 					<div class="card-body">
+	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
+	 						<p class="card-text">Description : <%= foundCampground.description%></p>
+
+	 						<% foundCampground.comments.forEach(function (comment){ %>
+	 						  <div class="card">
+	 							<div class="card-body">
+	 							  <p class="card-text">
+								   <%= comment.text %><small class="text-muted"> @<%= comment.author%></small>
+								   <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+								  </p>
+
+	 							</div>
+	 						  </div>
+							<%})%>
+	 					</div>
+	 				</div>
+
+
+					<form action="/campgrounds/<%= foundCampground._id%>/comment" method="POST">
+						  <div class="form-row">
+						    <div class="col-lg-8">
+						      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
+						    </div>
+						    <div class="col-lg-2">
+						      <input type="text" class="form-control" placeholder="user" name="data[author]">
+						    </div>
+						    <div class="col-lg-2">
+						    	<button type="Submit" class="btn btn-primary">Submit</button>
+						    </div>
+						  </div>		
+					</form>
+	 			</div>
+	 		</div>
+	 	</div>
+
+
+	  </div> 
 		
-		<% foundCampground.comments.forEach(function (comment){ %>
-			<p>
-				Comments: <%= comment.text %> - <strong><%= comment.author%> </strong> 
-
-			</p>
-		<%})%>
-
-		<form action="/campgrounds/<%= foundCampground._id%>/comment" method="POST">
-			  <div class="form-row">
-			    <div class="col-lg-4">
-			      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
-			    </div>
-			    <div class="col-lg-4">
-			      <input type="text" class="form-control" placeholder="user" name="data[author]">
-			    </div>
-			    <div class="col-lg-4">
-			    	<button type="Submit" class="btn btn-primary">Submit</button>
-			    </div>
-			  </div>		
-		</form>
 	</div>
 	
-
 
 <% include partials/footer %>

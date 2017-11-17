@@ -1,0 +1,13 @@
+div.main-content {
+	margin-top: 70px;
+}
+
+p i	{
+	float: right;
+}
+
+.liked{
+	color : #ff0000;
+	font-size: 1.2em;
+	
+}

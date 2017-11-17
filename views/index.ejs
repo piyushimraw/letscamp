@@ -1,20 +1,19 @@
 <% include partials/header%>
 <div class="container">
 	<h1>This page will show Camp Grounds</h1>
-
-<a href="/campgrounds/new">Add a new CampGround</a>
 	<div class="row">
 		<%campgrounds.forEach(function (ground) { %>
 		
 			<div class="col-lg-4">
-				<div class="thumbnail">
-					<img src="<%= ground.image%> ">
-					<h4 class="caption"><%= ground.name %></h4>
-					<p>
-						<a href="/campgrounds/<%= ground.id%>" class = "btn btn-primary"> More info</a>
-					</p>
+				<div class="card text-center" style="width: 20rem;">
+				  <img class="card-img-top" src="<%= ground.image%> " alt="Card image cap">
+				  <div class="card-body">
+				    <h4 class="card-title"><%= ground.name %></h4>
+				    <p class="card-text"><%= ground.description.substring(0,100)%></p>
+				    <a href="/campgrounds/<%= ground.id%>" class = "btn btn-primary"> More info</a>
+				  </div>
 				</div>
-			</div>	
+			</div>
 		<% })%>
 	</div>
 </div>
