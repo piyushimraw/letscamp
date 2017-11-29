@@ -75,7 +75,9 @@ app.post('/campgrounds/:id/comment', function(req, res){
 });
 
 
-app.listen("8080","127.0.0.1",function () {
+const port = process.env.PORT || 8080;
+const ip = process.env.IP || "localhost";
+app.listen(port ,ip,function () {
 	// body...
 	console.log("Let'sCamp server has restarted");
 });
