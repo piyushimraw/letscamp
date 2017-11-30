@@ -1,5 +1,5 @@
 var mongoose 	= require ("mongoose");
-const mongoDB =  'mongodb://admin:admin@mongod@ds125146.mlab.com:25146/lets_camp' || 'mongodb://127.0.0.1/letscamp' ;
+const mongoDB =  'mongodb://admin:admin@mongod@ds125146.mlab.com:25146/lets_camp';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { 
