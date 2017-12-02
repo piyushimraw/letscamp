@@ -1,10 +1,7 @@
 var app 		= require('./server');
 var Campground 	= require ('./models/campground');
 var Comment 	= require ('./models/comment');
-var seedDB		= require('./seeds');
 
-
-seedDB();
 app.get("/", function(req, res){
 	res.render("landing")
 });

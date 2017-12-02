@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "campsite landing page ",
   "engines": {
-    "node" : "4.2.6",
-    "npm"  :  "3.5.2"
+    "node": "4.2.6",
+    "npm": "3.5.2"
   },
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,11 @@
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "jshint": "^2.9.5",
     "mongoose": "^4.1.12",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
   }
 }
