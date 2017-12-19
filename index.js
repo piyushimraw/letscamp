@@ -2,6 +2,8 @@ var app 		= require('./server');
 var Campground 	= require ('./models/campground');
 var Comment 	= require ('./models/comment');
 var seedDB		= require('./seeds');
+var User		= require("./models/user");
+var passport	= require("passport");
 
 
 seedDB();
@@ -10,11 +12,12 @@ app.get("/", function(req, res){
 });
 
 app.get("/campgrounds", function(req, res){
+	console.log(req.user);
 	Campground.find({}, function(err, allcampgrounds){
 		if(err){
 			console.log(err);
 		}else {
-			res.render("index", {campgrounds : allcampgrounds});
+			res.render("index", {campgrounds : allcampgrounds, currentUser :  req.user});
 		}
 	});
 	
@@ -57,7 +60,7 @@ app.get("/campgrounds/:id", function(req, res){
 	})
 });
 
-app.post('/campgrounds/:id/comment', function(req, res){
+app.post('/campgrounds/:id/comment',isLoggedIn, function(req, res){
 	Comment.create(req.body.data, function(err, comment){
 		if(err) console.log(err);
 		else{
@@ -74,6 +77,54 @@ app.post('/campgrounds/:id/comment', function(req, res){
 	});
 });
 
+//================
+//AUTH Routes
+//================
+
+app.get("/register",function (req, res){
+	res.render('register');
+});
+
+//sign in post route
+
+app.post("/register", function(req, res){
+	var newUser = new User( {username : req.body.username});
+	User.register(newUser, req.body.password, function(err, user){
+		if(err){
+			console.log(err);
+			return res.render("register");
+		}
+		passport.authenticate("local")(req, res, function(){
+			res.redirect("/campgrounds");
+		});
+	});
+});
+
+app.get("/login", function (req, res){
+	res.render("login");
+});
+
+app.post("/login", function (req, res){
+	passport.authenticate("local")(req, res, function(){
+		res.redirect("/campgrounds");
+	});
+});
+
+app.get("/logout", function(req, res){
+	req.logout();
+	res.redirect("/campgrounds");
+});
+
+//=========
+//middleware
+//===========
+
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
 
 const port = process.env.PORT || 8080;
 const ip = process.env.IP || "localhost";

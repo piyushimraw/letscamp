@@ -16,7 +16,7 @@
 	 		<div class="col-mid-9">
 	 			<div class="right-content">
 	 				<div class="card" style="width: 40rem;">
-	 					<img src="<%= foundCampground.image%>" class ="card-img-top">
+	 					<img src="<%= foundCampground.image %>" class ="card-img-top">
 	 					
 	 					<div class="card-body">
 	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
@@ -43,7 +43,7 @@
 						      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
 						    </div>
 						    <div class="col-lg-2">
-						      <input type="text" class="form-control" placeholder="user" name="data[author]">
+						      <input type="text" class="form-control" placeholder="user" name="data[author]" value="<%= currentUser.username%>">
 						    </div>
 						    <div class="col-lg-2">
 						    	<button type="Submit" class="btn btn-primary">Submit</button>
