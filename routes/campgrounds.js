@@ -1,5 +1,5 @@
 var express      =   require("express"),
-    router       =   express.Router();
+    router       =   express.Router(),
     Campground  =   require("../models/campground");
 
 router.get("/", function(req, res){
@@ -18,16 +18,25 @@ router.get("/campgrounds", function(req, res){
 	
 });
 
-router.get("/campgrounds/new", function(req,res){
+router.get("/campgrounds/new", isLoggedIn, function(req,res){
     res.render("new");
 });
 
-router.post("/campgrounds", function(req, res){
+router.post("/campgrounds",isLoggedIn, function(req, res){
     //get data from form and add to campground array
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
-    var newCampground = { name: name, image: image, description : description };
+    var id          = req.user._id;
+    var username    = req.user.username;
+    console.log(id+username);
+    var newCampground = { 
+        
+        name: name, 
+        image: image, 
+        description : description, 
+        author:{id: id, username: username}  
+    };
 
     //adding campground to database
     Campground.create(newCampground, function(err, campground){
@@ -54,5 +63,12 @@ router.get("/campgrounds/:id", function(req, res){
         }
     });
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 module.exports =  router;

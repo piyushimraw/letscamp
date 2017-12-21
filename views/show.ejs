@@ -19,7 +19,7 @@
 	 					<img src="<%= foundCampground.image %>" class ="card-img-top">
 	 					
 	 					<div class="card-body">
-	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
+	 						<h4 class="card-title"><%=  foundCampground.name%> Postedby: <%= foundCampground.author.username %></h4>
 	 						<p class="card-text">Description : <%= foundCampground.description%></p>
 
 	 						<% foundCampground.comments.forEach(function (comment){ %>
