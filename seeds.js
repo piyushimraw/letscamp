@@ -29,28 +29,28 @@ var seedDB = function (){
         else {
             console.log("Campgrounds removed");
             //add a few campgrounds
-            data.forEach(function(seed){
-                Campground.create(seed, function(err, campground){
-                    if(err) console.log(err);
-                    else {
-                        //add a few comments
-                        console.log("campground added");
-                        Comment.create(
-                            {
-                                text: "Great place but no wifi",
-                                author: "Tyrell"
+            // data.forEach(function(seed){
+            //     Campground.create(seed, function(err, campground){
+            //         if(err) console.log(err);
+            //         else {
+            //             //add a few comments
+            //             console.log("campground added");
+            //             Comment.create(
+            //                 {
+            //                     text: "Great place but no wifi",
+            //                     author: "Tyrell"
 
-                            }, function(err, comment){
-                                if(err) console.log(err);
-                                else{
-                                    campground.comments.push(comment);
-                                    campground.save();
-                                }
+            //                 }, function(err, comment){
+            //                     if(err) console.log(err);
+            //                     else{
+            //                         campground.comments.push(comment);
+            //                         campground.save();
+            //                     }
 
-                            });
-                    }
-                });
-            });
+            //                 });
+            //         }
+            //     });
+            // });
         }
     });
 
