@@ -54,7 +54,7 @@ router.post("/campgrounds",isLoggedIn, function(req, res){
 
 router.get("/campgrounds/:id", function(req, res){
     //caputure the id
-    id = req.params.id;
+    var id = req.params.id;
     Campground.findById(id).populate("comments").exec (function(err, foundCampground){
         if(err){
             console.log(err);
@@ -65,7 +65,7 @@ router.get("/campgrounds/:id", function(req, res){
 });
 
 //update routes
-router.get("/campgrounds/:id/edit", function(req, res){
+router.get("/campgrounds/:id/edit",isAuthorized, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
         if(err){
             res.redirect("/campgrounds/:id");
@@ -75,7 +75,7 @@ router.get("/campgrounds/:id/edit", function(req, res){
     });
 });
 
-router.put("/campgrounds/:id", function(req, res){
+router.put("/campgrounds/:id",isAuthorized, function(req, res){
     Campground.findByIdAndUpdate(req.params.id,req.body.campground, function(err, editedCampground){
         if(err){
             res.redirect("/campgrounds/"+req.params.id+"/edit");
@@ -87,7 +87,7 @@ router.put("/campgrounds/:id", function(req, res){
 });
 
 //DESTROY campgroud route
-router.delete("/campgrounds/:id", function(req, res){
+router.delete("/campgrounds/:id",isAuthorized, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
         if(err){
             res.redirect("/campgrounds");
@@ -104,6 +104,26 @@ function isLoggedIn(req, res, next){
         return next();
     }
     res.redirect("/login");
+}
+
+function isAuthorized(req, res, next){
+    if(req.isAuthenticated()){
+        Campground.findById(req.params.id, function(err, foundCampground){
+            if(err){
+                res.redirect("back");
+            }else{
+                if(foundCampground.author.id.equals(req.user.id)){
+                    next();
+                }else{
+                    res.send("you cant do this operation");
+                }
+            }
+        });
+        
+    }else
+    {
+        res.redirect("/login");
+    }
 }
 
 module.exports =  router;

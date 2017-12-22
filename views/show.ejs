@@ -19,13 +19,18 @@
 	 					<img src="<%= foundCampground.image %>" class ="card-img-top">
 	 					
 	 					<div class="card-body">
-	 						<h4 class="card-title"><%=  foundCampground.name%> Postedby: <%= foundCampground.author.username %></h4>
+	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
 							 <p class="card-text">Description : <%= foundCampground.description%></p>
-							 <a href="/campgrounds/<%=foundCampground._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
-							 <form id="del" action="/campgrounds/<%= foundCampground._id%>?_method=DELETE" method="post">
-								<button class="btn btn-sm btn-danger" type="submit">Delete</button>
-							</form>
-
+								<p>
+									<em>Postedby: <%= foundCampground.author.username %></em>
+								</p>
+							 <!-- edit and delete button -->
+							 <%if(currentUser && foundCampground.author.id.equals(currentUser._id)){ %>
+									<a href="/campgrounds/<%=foundCampground._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+									<form id="del" action="/campgrounds/<%= foundCampground._id%>?_method=DELETE" method="post">
+									<button class="btn btn-sm btn-danger" type="submit">Delete</button>
+								</form>
+							<%}%>
 							<!-- comment content -->
 	 						<% foundCampground.comments.forEach(function (comment){ %>
 	 						  <div class="card">
