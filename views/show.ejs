@@ -20,7 +20,7 @@
 	 					
 	 					<div class="card-body">
 	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
-							 <p class="card-text">Description : <%= foundCampground.description%></p>
+							 <p class="card-text">Description :<%= foundCampground.description%></p>
 								<p>
 									<em>Postedby: <%= foundCampground.author.username %></em>
 								</p>
@@ -50,7 +50,7 @@
 					<form action="/campgrounds/<%= foundCampground._id%>/comment" method="POST">
 						  <div class="form-row">
 						    <div class="col-lg-8">
-						      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
+						      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="add a new comment" rows="3" name="data[text]"></textarea>
 						    </div>
 						    <div class="col-lg-2">
 									<button type="Submit" class="btn btn-primary">Submit</button>
