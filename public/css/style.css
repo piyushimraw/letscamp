@@ -11,3 +11,11 @@ p i	{
 	font-size: 1.2em;
 	
 }
+
+a.btn {
+	color: rgb(255, 255, 255);
+}
+
+#del{
+	display: inline;
+}

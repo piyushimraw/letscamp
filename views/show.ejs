@@ -20,8 +20,13 @@
 	 					
 	 					<div class="card-body">
 	 						<h4 class="card-title"><%=  foundCampground.name%> Postedby: <%= foundCampground.author.username %></h4>
-	 						<p class="card-text">Description : <%= foundCampground.description%></p>
+							 <p class="card-text">Description : <%= foundCampground.description%></p>
+							 <a href="/campgrounds/<%=foundCampground._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+							 <form id="del" action="/campgrounds/<%= foundCampground._id%>?_method=DELETE" method="post">
+								<button class="btn btn-sm btn-danger" type="submit">Delete</button>
+							</form>
 
+							<!-- comment content -->
 	 						<% foundCampground.comments.forEach(function (comment){ %>
 	 						  <div class="card">
 	 							<div class="card-body">
@@ -43,7 +48,7 @@
 						      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
 						    </div>
 						    <div class="col-lg-2">
-						    	<button type="Submit" class="btn btn-primary">Submit</button>
+									<button type="Submit" class="btn btn-primary">Submit</button>
 						    </div>
 						  </div>		
 					</form>

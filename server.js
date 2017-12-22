@@ -1,6 +1,7 @@
 var express 	    = require ("express");
 var app 		    = express();
 var bodyParser      = require("body-parser"),
+    methodOverride  = require ("method-override"),
     passport        = require ("passport"),
     LocalStrategy   = require ("passport-local");
 
@@ -15,6 +16,7 @@ app.use(require ("express-session") ({
     saveUninitialized: false
 }));
 
+app.use(methodOverride("_method"));
 
 app.use(passport.initialize());
 app.use(passport.session());
