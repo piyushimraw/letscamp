@@ -1,0 +1,20 @@
+<% include partials/header %>
+    <div class="container">
+        <div class="main-content ">
+            <div class="comment-form">
+                    <h5>Edit Comment</h5>
+                    <h4><i class="fa fa-user" aria-hidden="true"></i> <span><%= currentUser.username %></span> </h4> 
+                    <form action="/campgrounds/<%= foundCampground._id %>/comment/<%= comment._id %>?_method=PUT" method="post">
+                        <div class="col-lg-8">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="add a new comment" rows="3" name="data[text]">
+                                    <%= comment.text %>
+                                </textarea>
+                                  </div>
+                              <div class="col-lg-2">
+                                      <button type="Submit" class="btn btn-primary">Submit</button>
+                              </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+<% include partials/footer%>

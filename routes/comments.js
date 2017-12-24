@@ -23,6 +23,35 @@ router.post("/campgrounds/:id/comment",isLoggedIn, function(req, res){
     });
 });
 
+//comment edit route
+router.get("/campgrounds/:id/comment/:comment_id/edit", function(req, res){
+    Campground.findById(req.params.id, function (err, foundCampground){
+        if(err){
+            res.send(err);
+        }
+        else {
+            Comment.findById(req.params.comment_id, function(err, comment){
+                if(err){
+                    res.send(err);
+                }
+                else {
+                    res.render("editComment",{foundCampground : foundCampground, comment:comment});     
+                }
+            });
+        }
+    });
+});
+
+router.put("/campgrounds/:id/comment/:comment_id", function (req, res){
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.data, function(err, comment){
+        if(err){
+            res.send("some error occured" + req.body.data.text + req.params.comment_id+ comment);
+        }else{
+            res.redirect("/campgrounds/"+req.params.id);
+        }
+    });
+});
+
 
 //==========
 // Middleware
