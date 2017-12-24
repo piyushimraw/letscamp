@@ -13,14 +13,18 @@ p i	{
 	
 }
 
-a.card-text{
+/* a.card-text{
 	font-size: 0.75rem;
-}
+} */
 
 a.btn-warning {
 	color: rgb(255, 255, 255);
 }
 
 #del{
+	display: inline;
+}
+
+#delcomm{
 	display: inline;
 }

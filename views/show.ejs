@@ -40,6 +40,9 @@
 								   <i class="fa fa-heart-o heart" aria-hidden="true"></i>
 								  </p>
 									<a href="/campgrounds/<%= foundCampground._id %>/comment/<%= comment._id %>/edit" class="btn btn-outline-warning btn-sm card-text">Edit</a>
+									<form id="delcomm" action="/campgrounds/<%= foundCampground._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+										<button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+									</form>
 	 							</div>
 	 						  </div>
 							<%})%>
