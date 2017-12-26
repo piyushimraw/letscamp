@@ -45,11 +45,8 @@ Let the installation finish and then make a directory data to run mongodb databa
 
 ```
 mkdir data
-```
+npm run initDB
 
-start mongo daemon 
-```
-mongod --dbpath ./data/
 ```
 
 after mongodb starts and you can see a listening port run
