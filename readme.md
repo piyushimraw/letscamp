@@ -41,7 +41,18 @@ And then run
 npm install
 ```
 
-Let the installation finish and then run 
+Let the installation finish and then make a directory data to run mongodb database
+
+```
+mkdir data
+```
+
+start mongo daemon 
+```
+mongod --dbpath ./data/
+```
+
+after mongodb starts and you can see a listening port run
 
 ```
 npm start
