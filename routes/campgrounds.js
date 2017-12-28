@@ -48,6 +48,7 @@ router.post("/campgrounds",middleware.isLoggedIn, function(req, res){
         }
         else{
             //redirect back  to cammpgrounds
+            req.flash("success", "Added a new Campground");
             res.redirect("/campgrounds");
         }
     });
@@ -83,6 +84,7 @@ router.put("/campgrounds/:id",middleware.isCampgroundAuth, function(req, res){
             res.redirect("/campgrounds/"+req.params.id+"/edit");
         }
         else{
+            req.flash("success", "SuccesFully Editted Campground");
             res.redirect("/campgrounds/"+req.params.id);
         }
     });
@@ -95,6 +97,7 @@ router.delete("/campgrounds/:id",middleware.isCampgroundAuth, function(req, res)
             res.redirect("/campgrounds");
         }
         else{
+            req.flash("Error", "Deleted Campground");
             res.redirect("/campgrounds");
         }
     });

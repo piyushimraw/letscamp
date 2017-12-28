@@ -6,6 +6,7 @@ middleware.isLoggedIn  = function (req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    req.flash("error", "Please Login to do this operation");
     res.redirect("/login");
 };
 

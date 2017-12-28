@@ -48,6 +48,7 @@ router.put("/campgrounds/:id/comment/:comment_id",middleware.isCommentAuth, func
         if(err){
             res.send("some error occured" + req.body.data.text + req.params.comment_id+ comment);
         }else{
+            req.flash("success", "Comment Edited");
             res.redirect("/campgrounds/"+req.params.id);
         }
     });
@@ -60,6 +61,7 @@ router.delete("/campgrounds/:id/comment/:comment_id",middleware.isCommentAuth, f
             res.send(err);
         }
         else {
+            req.flash("error", "Comment Deleted");
             res.redirect("back");
         }
     });

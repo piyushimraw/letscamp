@@ -1,5 +1,9 @@
+.alert {
+	margin-top: 5em;
+	margin-bottom: 0em;
+}
 div.main-content {
-	margin-top: 70px;
+	margin-top: 4rem;
 }
 
 p i	{
