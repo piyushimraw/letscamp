@@ -6,6 +6,31 @@ div.main-content {
 	margin-top: 4rem;
 }
 
+div.landing-page{
+	background-image: url(https://images.unsplash.com/photo-1504632348771-974e356b80af?auto=format&fit=crop&w=1500&q=80);
+	background-size: cover;
+	background-position: center;	
+}
+
+.lp-content{
+	margin: 0 auto;
+	padding-top: 20%;
+	padding-bottom: 20%;
+	text-align: center;
+	font-size: 0rem;
+	color: #e2edff;
+}
+.title{
+	font-size: 5rem;
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+	font-family: 'Merriweather', serif;
+
+}
+.subtitle{
+	font-size: 1.5rem;
+	font-family: 'Lato', sans-serif;
+}
+
 p i	{
 	display: inline;
 	float: right;
