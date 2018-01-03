@@ -1,0 +1,30 @@
+<% include partials/header%>
+	<div class="container">
+			<h1>Create a new CampGround</h1>
+		<form method="POST" action="/campgrounds/<%=foundCampground._id%>?_method=PUT">
+			<div class="form-group">
+                <input type="text" name="campground[name]" placeholder="Enter Campground Name" 
+                    class="form-control" value="<%=foundCampground.name%>">
+			</div>
+			<div class="form-group">
+                <input type="text" name="campground[image]" placeholder="Enter image URL" 
+                    class="form-control" value="<%=foundCampground.image%>">
+			</div>
+			<div class="form-group">
+                <!-- <input type="text" name="campground[description]" placeholder="Enter Description" 
+					class="form-control" value=""> -->
+					<textarea name="campground[description]" placeholder="enter description" 
+							  class="form-control" id="" cols="30" rows="10">
+						<%=foundCampground.description%>
+					</textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-lg">Submit</button>
+			</div>
+			
+			
+		</form>
+	</div>
+
+	<a href="/campgrounds">Back</a>
+<%include partials/footer%>

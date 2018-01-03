@@ -16,20 +16,35 @@
 	 		<div class="col-mid-9">
 	 			<div class="right-content">
 	 				<div class="card" style="width: 40rem;">
-	 					<img src="<%= foundCampground.image%>" class ="card-img-top">
+	 					<img src="<%= foundCampground.image %>" class ="card-img-top">
 	 					
 	 					<div class="card-body">
 	 						<h4 class="card-title"><%=  foundCampground.name%></h4>
-	 						<p class="card-text">Description : <%= foundCampground.description%></p>
-
+							 <p class="card-text">Description :<%= foundCampground.description%></p>
+								<p>
+									<em>Postedby: <%= foundCampground.author.username %></em>
+								</p>
+							 <!-- edit and delete button -->
+							 <%if(currentUser && foundCampground.author.id.equals(currentUser._id)){ %>
+									<a href="/campgrounds/<%=foundCampground._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+									<form id="del" action="/campgrounds/<%= foundCampground._id%>?_method=DELETE" method="post">
+									<button class="btn btn-sm btn-danger" type="submit">Delete</button>
+								</form>
+							<%}%>
+							<!-- comment content -->
 	 						<% foundCampground.comments.forEach(function (comment){ %>
 	 						  <div class="card">
 	 							<div class="card-body">
 	 							  <p class="card-text">
-								   <%= comment.text %><small class="text-muted"> @<%= comment.author%></small>
+								   <%= comment.text %><small class="text-muted"> @<%= comment.author.username%></small>
 								   <i class="fa fa-heart-o heart" aria-hidden="true"></i>
-								  </p>
-
+									</p>
+									<%if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+									<a href="/campgrounds/<%= foundCampground._id %>/comment/<%= comment._id %>/edit" class="btn btn-outline-warning btn-sm card-text">Edit</a>
+									<form id="delcomm" action="/campgrounds/<%= foundCampground._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+										<button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+									</form>
+									<%}%>
 	 							</div>
 	 						  </div>
 							<%})%>
@@ -40,13 +55,10 @@
 					<form action="/campgrounds/<%= foundCampground._id%>/comment" method="POST">
 						  <div class="form-row">
 						    <div class="col-lg-8">
-						      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="data[text]"></textarea>
-						    </div>
+						      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="add a new comment" rows="3" name="data[text]"></textarea>
+								</div>
 						    <div class="col-lg-2">
-						      <input type="text" class="form-control" placeholder="user" name="data[author]">
-						    </div>
-						    <div class="col-lg-2">
-						    	<button type="Submit" class="btn btn-primary">Submit</button>
+									<button type="Submit" class="btn btn-primary">Submit</button>
 						    </div>
 						  </div>		
 					</form>

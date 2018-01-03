@@ -1,8 +1,41 @@
+.alert {
+	margin-top: 5em;
+	margin-bottom: 0em;
+}
 div.main-content {
-	margin-top: 70px;
+	margin-top: 4rem;
+}
+
+div.landing-page{
+	background-image: url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?auto=format&fit=crop&w=1504&q=80);
+	background-size: cover;
+	background-position: center;	
+}
+
+.lp-content{
+	margin: 0 auto;
+	padding-top: 20%;
+	padding-bottom: 20%;
+	text-align: center;
+	font-size: 0rem;
+	color: #e2edff;
+}
+.title{
+	font-size: 5rem;
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
+	font-family: 'Merriweather', serif;
+
+}
+.subtitle{
+	font-size: 1.5rem;
+	/* font-weight: bold; */
+	color: #C8917F;
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2), 0px 8px 13px rgba(0, 0, 0, 0.1);
+	font-family: 'Lato', sans-serif;
 }
 
 p i	{
+	display: inline;
 	float: right;
 }
 
@@ -10,4 +43,20 @@ p i	{
 	color : #ff0000;
 	font-size: 1.2em;
 	
+}
+
+/* a.card-text{
+	font-size: 0.75rem;
+} */
+
+a.btn-warning {
+	color: rgb(255, 255, 255);
+}
+
+#del{
+	display: inline;
+}
+
+#delcomm{
+	display: inline;
 }
