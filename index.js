@@ -1,7 +1,7 @@
 var app 	= require("./server"),
 	seedDB	= require("./seeds");
 
-// seedDB();
+seedDB();
 //routes
 var campgroundRoutes = require("./routes/campgrounds"),
 	commentRoutes	 = require("./routes/comments"),
