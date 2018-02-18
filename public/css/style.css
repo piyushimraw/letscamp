@@ -7,9 +7,10 @@ div.main-content {
 }
 
 div.landing-page{
-	background-image: url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?auto=format&fit=crop&w=1504&q=80);
+	background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                rgba(0,0,0,0.55) url(https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?auto=format&fit=crop&w=1504&q=80);
 	background-size: cover;
-	background-position: center;	
+	background-position: center;
 }
 
 .lp-content{
@@ -29,7 +30,7 @@ div.landing-page{
 .subtitle{
 	font-size: 1.5rem;
 	/* font-weight: bold; */
-	color: #C8917F;
+	color: #e2edff;
 	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2), 0px 8px 13px rgba(0, 0, 0, 0.1);
 	font-family: 'Lato', sans-serif;
 }
